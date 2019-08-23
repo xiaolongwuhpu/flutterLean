@@ -1,26 +1,61 @@
-
 import 'package:flutter/material.dart';
 
-import 'TestProgressPaint.dart';
+import 'CusProgressWidget.dart';
 
 class ShowListProgressPaint extends StatefulWidget {
   @override
   _ShowListProgressPaintState createState() => _ShowListProgressPaintState();
 }
 
-class _ShowListProgressPaintState extends State<ShowListProgressPaint> {
+class _ShowListProgressPaintState extends State<ShowListProgressPaint>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 30),
-        child: Column(children: <Widget>[
-          TestProgressPaint(value: 0.4,),
-          TestProgressPaint(),
-          TestProgressPaint(value: 0.8,),
-
-        ],),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 30),
+          alignment: Alignment.center,
+          child: Column(
+            children: <Widget>[
+              AnimatedBuilder(
+                  animation: controller,
+//                child:,
+                  builder: (BuildContext context, Widget child) {
+                    return CusProgressWidget(
+                      value: animation.value,
+                    );
+                  }),
+//            CusProgressWidget(),
+//            CusProgressWidget(
+//              value: 0.8,
+//            ),
+            ],
+          ),
+        ),
       ),
+      floatingActionButton: CircleAvatar(child: RaisedButton(onPressed: startAnim,shape: CircleBorder(),child: Text("杀",textAlign: TextAlign.center,),),),
     );
+  }
+
+  AnimationController controller;
+  Animation animation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 5000));
+    animation = Tween(begin: 0.0, end: 1.0).animate(controller)
+      ..addListener(() {
+//        setState(() {
+////        print("ttt   value=${animation.value}");
+//        });
+      });
+    controller.forward();
+  }
+
+  startAnim(){
+    controller.forward(from: 0.0);
   }
 }
