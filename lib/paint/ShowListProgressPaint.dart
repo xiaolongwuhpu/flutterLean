@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'CusProgressWidget.dart';
+import 'CusProgressWidget90.dart';
 
 class ShowListProgressPaint extends StatefulWidget {
   @override
@@ -22,8 +23,15 @@ class _ShowListProgressPaintState extends State<ShowListProgressPaint>
                   animation: controller,
 //                child:,
                   builder: (BuildContext context, Widget child) {
-                    return CusProgressWidget(
-                      value: animation.value,
+                    return Column(
+                      children: <Widget>[
+                        CusProgressWidget90(
+                          value: animation.value,
+                        ),
+                        CusProgressWidget(
+                          value: animation.value,
+                        ),
+                      ],
                     );
                   }),
 //            CusProgressWidget(),
@@ -34,7 +42,16 @@ class _ShowListProgressPaintState extends State<ShowListProgressPaint>
           ),
         ),
       ),
-      floatingActionButton: CircleAvatar(child: RaisedButton(onPressed: startAnim,shape: CircleBorder(),child: Text("杀",textAlign: TextAlign.center,),),),
+      floatingActionButton: CircleAvatar(
+        child: RaisedButton(
+          onPressed: startAnim,
+          shape: CircleBorder(),
+          child: Text(
+            "杀",
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
     );
   }
 
@@ -55,7 +72,7 @@ class _ShowListProgressPaintState extends State<ShowListProgressPaint>
     controller.forward();
   }
 
-  startAnim(){
+  startAnim() {
     controller.forward(from: 0.0);
   }
 }

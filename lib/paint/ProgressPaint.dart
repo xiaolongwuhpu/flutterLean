@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -41,9 +43,17 @@ class ProgressPaint extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    print("ttt   value=${value}  width = ${size.width}  height=${size.height}");
     double startAngle = 0 /*-math.pi / 2*/;
     double endAngle = value * totalAngle;
+
+    ///坐标原点
+    canvas.drawPoints(
+        PointMode.points,
+        [Offset(0, 0)],
+        linePaint
+          ..color = Colors.orange
+          ..strokeWidth = 15
+          ..strokeCap = StrokeCap.round);
     linePaint
       ..color = backgroundColor
       ..strokeWidth = stokeWidth
@@ -75,7 +85,6 @@ class ProgressPaint extends CustomPainter {
           fontSize: 28.0,
         ),
       );
-    canvas.drawColor(Color(0x99ff6699), BlendMode.color);
 
     canvas.save();
     canvas.translate(size.width / 2, size.height / 2);
@@ -87,6 +96,32 @@ class ProgressPaint extends CustomPainter {
         new Offset((size.width / 2) - (textPainter.width / 2),
             (size.height / 2) - (textPainter.height / 2)));
     canvas.restore();
+
+    ///移动后的坐标原点
+    canvas.drawPoints(
+        PointMode.points,
+        [Offset(0, 0)],
+        linePaint
+          ..color = Colors.black
+          ..strokeWidth = stokeWidth
+          ..shader = null
+          ..strokeCap = StrokeCap.round);
+
+//canvas.save();
+    canvas.rotate(math.pi / 2);
+    textPainter
+      ..text = new TextSpan(
+        text: "方案一",
+        style: TextStyleUtils.boldStyle(
+          ColorEnum.blue,
+          fontSize: 14.0,
+        ),
+      );
+    textPainter.layout();
+    textPainter.paint(
+        canvas,
+        new Offset((size.width / 2) - (textPainter.width / 2),
+            -(size.height) - textPainter.height));
   }
 
   @override
