@@ -5,10 +5,9 @@
 
 ### 2. widgets of list FadeInFadeOut
 
-![gif](https://github.com/xiaolongwuhpu/flutterLean/blob/master/assets/fadeInOut.gif)
+![gif](https://github.com/xiaolongwuhpu/flutterLean/blob/master/assets/fadeInOut.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
-### ...
-把  ![img](这里写你图片的链接)
+### all
  ![all](https://github.com/xiaolongwuhpu/flutterLean/blob/master/assets/all.jpg) 
 
 
