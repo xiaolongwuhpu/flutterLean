@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/paint/TestRotate.dart';
 
 import 'CusProgressWidget.dart';
 import 'CusProgressWidget90.dart';
+import 'TestTextPaint.dart';
+import 'WaveProgressWidget.dart';
 
 class ShowListProgressPaint extends StatefulWidget {
   @override
@@ -25,10 +28,17 @@ class _ShowListProgressPaintState extends State<ShowListProgressPaint>
                   builder: (BuildContext context, Widget child) {
                     return Column(
                       children: <Widget>[
-                        CusProgressWidget90(
+                        TextPaintWidget(),
+//                        CusProgressWidget90(
+//                          value: animation.value,
+//                        ),
+                        CusProgressWidget(
                           value: animation.value,
                         ),
-                        CusProgressWidget(
+                        WaveProgressWidget(
+                          value: animation.value,
+                        ),
+                        TestRotate(
                           value: animation.value,
                         ),
                       ],

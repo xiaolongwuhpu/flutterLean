@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class FadeInOutWidget extends StatefulWidget {
@@ -16,7 +16,14 @@ class _FadeInOutWidgetState extends State<FadeInOutWidget>
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
-        opacity: _animation, child: Image.network(list[index],fit: BoxFit.cover,));
+        opacity: _animation,
+        child:CachedNetworkImage(
+          imageUrl: list[index],fit: BoxFit.cover,
+          placeholder: (context, url) => new CircularProgressIndicator(),
+          errorWidget: (context, url, error) => new Icon(Icons.error),
+        ),
+//        child: Image.network(list[index],fit: BoxFit.cover,)
+    );
   }
   ///角标索引值
   int index = 0;
@@ -91,7 +98,7 @@ class _FadeInOutWidgetState extends State<FadeInOutWidget>
   void _initPlayerWidgetAnim() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: 3000),
     );
     _animation = Tween(
       begin: 0.3,

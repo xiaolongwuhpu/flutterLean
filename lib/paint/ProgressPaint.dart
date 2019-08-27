@@ -1,7 +1,9 @@
+
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+//import 'dart:math' as math;
 
 import 'package:flutter_app/style/CommonStyle.dart';
 
@@ -27,7 +29,7 @@ class ProgressPaint extends CustomPainter {
     this.colors,
     this.radius,
     this.value,
-    this.totalAngle = math.pi * 2,
+    this.totalAngle = pi * 2,
     this.backgroundColor,
     this.stokeWidth,
   }) : super() {
@@ -88,7 +90,7 @@ class ProgressPaint extends CustomPainter {
 
     canvas.save();
     canvas.translate(size.width / 2, size.height / 2);
-    canvas.rotate(math.pi / 2);
+    canvas.rotate(pi / 2);
     canvas.translate(-size.width / 2, -size.height / 2);
     textPainter.layout();
     textPainter.paint(
@@ -108,7 +110,7 @@ class ProgressPaint extends CustomPainter {
           ..strokeCap = StrokeCap.round);
 
 //canvas.save();
-    canvas.rotate(math.pi / 2);
+    canvas.rotate(pi / 2);
     textPainter
       ..text = new TextSpan(
         text: "方案一",
