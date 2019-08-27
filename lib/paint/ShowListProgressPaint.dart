@@ -29,9 +29,9 @@ class _ShowListProgressPaintState extends State<ShowListProgressPaint>
                     return Column(
                       children: <Widget>[
                         TextPaintWidget(),
-//                        CusProgressWidget90(
-//                          value: animation.value,
-//                        ),
+                        CusProgressWidget90(
+                          value: animation.value,
+                        ),
                         CusProgressWidget(
                           value: animation.value,
                         ),

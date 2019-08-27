@@ -53,8 +53,8 @@ class _TestRotateState extends State<TestRotate> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 200,
-      width: 200,
+      height: 150,
+      width: 150,
       color: Color(0x33000000),
       margin: EdgeInsets.symmetric(vertical: 6),
       child: CustomPaint(

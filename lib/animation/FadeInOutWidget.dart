@@ -47,7 +47,7 @@ class _FadeInOutWidgetState extends State<FadeInOutWidget>
   Timer _timer;
 
   /// 总的时间秒数
-  int totleSeconds = 5;
+  int totleSeconds = 3;
 
   /// 当前倒计时的秒数。
   int currentTimerSeconds = 0;
